@@ -2,8 +2,11 @@ package com.example.marketplacedemo.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Data
+@NoArgsConstructor
 public class Item {
 
     @Id
