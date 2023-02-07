@@ -2,17 +2,16 @@ package com.example.marketplacedemo.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.util.List;
-
 @Entity
 @Data
-public class Supplier {
+public class Item {
+
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     private long id;
-    private long name;
-    @OneToMany
-    private List<Item> items;
-
+    private String name;
+    private String description;
+    private double price;
+    @ManyToOne
+    private Supplier supplier;
 }
