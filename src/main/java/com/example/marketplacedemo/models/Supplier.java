@@ -15,6 +15,7 @@ public class Supplier {
     private long id;
     private String name;
     @OneToMany
+    @JoinColumn(name = "SUPPLIER_ID")
     private List<Item> items;
 
 }
