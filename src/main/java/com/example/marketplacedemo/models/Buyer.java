@@ -14,7 +14,4 @@ public class Buyer {
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     private long id;
     private String name;
-    @OneToMany
-    @JoinColumn(name = "fk_buyer_id")
-    private List<Order> orders;
 }
