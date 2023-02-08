@@ -13,7 +13,7 @@ public class Supplier {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
     private long id;
-    private long name;
+    private String name;
     @OneToMany
     private List<Item> items;
 
