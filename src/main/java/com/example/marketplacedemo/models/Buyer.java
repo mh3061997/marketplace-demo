@@ -15,5 +15,6 @@ public class Buyer {
     private long id;
     private String name;
     @OneToMany
+    @JoinColumn(name = "fk_buyer_id")
     private List<Order> orders;
 }
