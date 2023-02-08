@@ -8,15 +8,22 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BuyerFacade {
+public class MarketFacade {
     private final ItemRepository itemRepo;
 
     @Autowired
-    public BuyerFacade(ItemRepository itemRepo) {
+    public MarketFacade(ItemRepository itemRepo) {
         this.itemRepo = itemRepo;
     }
 
-    List<Item> getMarketItems() {
+    public List<Item> getMarketItems() {
         return itemRepo.findAll();
     }
+
+    public void changeItemQuantity(Long itemId, int quantity) {
+        Item item = itemRepo.getReferenceById(itemId);
+        item.setQuantity(quantity);
+        itemRepo.save(item);
+    }
+
 }

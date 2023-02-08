@@ -5,6 +5,8 @@ import com.example.marketplacedemo.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SupplierFacade {
 
@@ -15,8 +17,7 @@ public class SupplierFacade {
         this.itemRepo = itemRepo;
     }
 
-    void changeItemQuantity(Item item,int quantity) {
-        item.setQuantity(quantity);
-        itemRepo.save(item);
+   public List<Item> getSupplierItems(Long supplierId) {
+        return itemRepo.findBySupplierId(supplierId);
     }
 }
