@@ -1,4 +1,4 @@
-package com.example.marketplacedemo.security.security.services;
+package com.example.marketplacedemo.security.services;
 
 import com.example.marketplacedemo.security.models.User;
 import com.example.marketplacedemo.security.repository.UserRepository;

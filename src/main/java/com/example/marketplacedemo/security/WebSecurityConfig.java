@@ -1,8 +1,8 @@
-package com.example.marketplacedemo.security.security;
+package com.example.marketplacedemo.security;
 
-import com.example.marketplacedemo.security.security.jwt.AuthEntryPointJwt;
-import com.example.marketplacedemo.security.security.jwt.AuthTokenFilter;
-import com.example.marketplacedemo.security.security.services.UserDetailsServiceImpl;
+import com.example.marketplacedemo.security.jwt.AuthEntryPointJwt;
+import com.example.marketplacedemo.security.jwt.AuthTokenFilter;
+import com.example.marketplacedemo.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

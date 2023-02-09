@@ -1,6 +1,6 @@
-package com.example.marketplacedemo.security.security.jwt;
+package com.example.marketplacedemo.security.jwt;
 
-import com.example.marketplacedemo.security.security.services.UserDetailsServiceImpl;
+import com.example.marketplacedemo.security.services.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
-    private com.example.marketplacedemo.security.security.jwt.JwtUtils jwtUtils;
+    private JwtUtils jwtUtils;
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;

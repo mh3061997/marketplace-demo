@@ -1,4 +1,4 @@
-package com.example.marketplacedemo.security.security.jwt;
+package com.example.marketplacedemo.security.jwt;
 
 import java.io.IOException;
 import java.util.HashMap;
