@@ -6,6 +6,7 @@ import com.example.marketplacedemo.mappers.ItemMapper;
 import com.example.marketplacedemo.models.Item;
 import com.example.marketplacedemo.services.MarketFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class ItemControllerImpl implements ItemController {
 
     @Override
     @PostMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_SUPPLIER')")
     public void changeItemQuantity(@PathVariable Long id, @RequestParam int quantity) {
         marketFacade.changeItemQuantity(id, quantity);
     }
