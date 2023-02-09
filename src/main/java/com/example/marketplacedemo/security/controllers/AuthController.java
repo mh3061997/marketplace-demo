@@ -13,6 +13,8 @@ import com.example.marketplacedemo.security.payload.request.SignupRequest;
 import com.example.marketplacedemo.security.payload.response.JwtResponse;
 import com.example.marketplacedemo.security.payload.response.MessageResponse;
 import com.example.marketplacedemo.security.security.jwt.JwtUtils;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -68,7 +70,7 @@ public class AuthController {
   }
 
   @PostMapping("/register")
-  public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
+  public ResponseEntity<?> registerUser(@RequestBody @Valid SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
           .badRequest()
@@ -90,28 +92,22 @@ public class AuthController {
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
-      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+      Role userRole = roleRepository.findByName(ERole.ROLE_BUYER)
           .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
       roles.add(userRole);
     } else {
       strRoles.forEach(role -> {
         switch (role) {
-        case "admin":
-          Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+        case "supplier":
+          Role supplierRole = roleRepository.findByName(ERole.ROLE_SUPPLIER)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-          roles.add(adminRole);
-
-          break;
-        case "mod":
-          Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
-              .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-          roles.add(modRole);
+          roles.add(supplierRole);
 
           break;
         default:
-          Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+          Role buyerRole = roleRepository.findByName(ERole.ROLE_BUYER)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-          roles.add(userRole);
+          roles.add(buyerRole);
         }
       });
     }

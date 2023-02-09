@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/item")
+@CrossOrigin(origins = "*")
 public class ItemControllerImpl implements ItemController {
 
     private final MarketFacade marketFacade;

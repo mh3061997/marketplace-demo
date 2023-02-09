@@ -1,6 +1,8 @@
 package com.example.marketplacedemo.security.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +23,7 @@ public class User {
 
   private String username;
 
+  @NotBlank(message = "Email is required")
   private String email;
 
   private String password;
