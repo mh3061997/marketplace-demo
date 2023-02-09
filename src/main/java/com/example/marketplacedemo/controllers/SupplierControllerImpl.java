@@ -3,18 +3,17 @@ package com.example.marketplacedemo.controllers;
 import com.example.marketplacedemo.dtos.ItemDto;
 import com.example.marketplacedemo.interfaces.SupplierController;
 import com.example.marketplacedemo.mappers.ItemMapper;
+import com.example.marketplacedemo.models.StatisticsDto;
 import com.example.marketplacedemo.services.SupplierFacade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/supplier")
+@CrossOrigin(origins = "*")
 public class SupplierControllerImpl implements SupplierController {
 
     private final SupplierFacade supplierFacade;
@@ -32,5 +31,9 @@ public class SupplierControllerImpl implements SupplierController {
         return supplierFacade.getSupplierItems(id).stream().map(itemMapper::mapItemtoDto).collect(Collectors.toList());
     }
 
+    @GetMapping(value = "/stats")
+    public List<StatisticsDto> getStats(){
+        return supplierFacade.getStatistics();
+    }
 
 }
